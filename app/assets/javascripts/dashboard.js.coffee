@@ -72,7 +72,7 @@ jQuery ->
   if gon?
     invoices = gon.chart_data["billing"]
     payments = gon.chart_data["payments"]
-    chart_data = [invoices, payments]
+    chart_data = [billing, payments]
 
   try
     jQuery.jqplot "dashboard-chart", chart_data, chart_options
