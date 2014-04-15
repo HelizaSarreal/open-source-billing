@@ -15,11 +15,11 @@ jQuery ->
       barPadding: 5
 
   chart_series =  [
-    label: "Invoices"
+    label: "Billing"
     shadow: false
     color: '#00BDE5'
   ,
-    label: "Paid Invoices"
+    label: "Paid Bills"
     shadow: false
     color: '#8EC42A'
   ]
@@ -70,7 +70,7 @@ jQuery ->
 
 
   if gon?
-    invoices = gon.chart_data["invoices"]
+    invoices = gon.chart_data["billing"]
     payments = gon.chart_data["payments"]
     chart_data = [invoices, payments]
 
@@ -80,7 +80,7 @@ jQuery ->
 
   # show chart details when chart bar is clicked
   jQuery("#dashboard-chart").bind "jqplotDataClick", (ev, seriesIndex, pointIndex, data) ->
-    chart_for =  if seriesIndex == 0 then 'invoices' else 'payments'
+    chart_for =  if seriesIndex == 0 then 'billing' else 'payments'
     jQuery.ajax '/dashboard/chart_details',
                 type: 'POST'
                 data: "chart_date=#{chart_ticks[pointIndex]}&chart_for=#{chart_for}"
